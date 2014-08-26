@@ -8,7 +8,8 @@ class ConfigPackage(Package):
 
     @wrap_install
     def install(self):
-        self.run(['cp', './environment', '/pipeline'])
+        with self.indir(self.build_path):
+            self.run(['cp', './environment', '/pipeline'])
 
 pk = ConfigPackage("config-pipeline@1.0.0")
 pk.main()
