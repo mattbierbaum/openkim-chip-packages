@@ -19,5 +19,4 @@ class ConfigPackage(Package):
     def deactivate(self):
         self.path_pull('hahlol', "CONF") 
 
-pk = ConfigPackage("config-pipeline@1.0.0")
-pk.main()
+pkg = ConfigPackage
