@@ -1,0 +1,59 @@
+#!/bin/bash
+#==============================================
+# this file has a specific format since it is
+# also read by python.  only FOO=bar and
+# the use of $BAZ can be substituted. comments
+# start in column 0
+#==============================================
+ENVVERSION=1
+
+USERNAME=openkim
+HOMEDIR=/home/$USERNAME
+PIPELINEDIR=$HOMEDIR/openkim-pipeline
+SETUPDIR=$HOMEDIR/openkim-pipeline-setup
+APIDIR=$HOMEDIR/kim-api
+APILIBDIR=$HOMEDIR/kim-api-install
+WEBDIR=$HOMEDIR/openkim-website
+BINDIR=$HOMEDIR/bin
+BUILDDIR=$HOMEDIR/builds
+
+REPODIR=$HOMEDIR/openkim-repository
+KIM_MODELS_DIR=$REPODIR/mo
+KIM_TESTS_DIR=$REPODIR/te
+KIM_MODEL_DRIVER_DIR=$REPODIR/md
+KIM_TEST_DRIVER_DIR=$REPODIR/td
+KIM_TEST_RESULT_DIR=$REPODIR/tr
+KIM_ERROR_RESULT_DIR=$REPODIR/er
+
+CONFDIR=/pipeline
+FILE_CONF=$CONFDIR/environment
+FILE_CONF_EXTRA=$FILE_CONF.extra
+FILE_IDRSA=$CONFDIR/id_rsa
+FILE_AUTHKEYS=$CONFDIR/authorized_keys
+FILE_BENCHMARK=$CONFDIR/benchmark
+
+LOCKFILE=/setuplock
+
+GITHOST=github.com/openkim
+GITNAME=openkim-pipeline-setup
+
+VMVERSION=1
+
+#==============================================
+# some variables that should always exist in a
+# completely setup system:
+#
+# GITBRANCH, SETUPARGS
+#
+# variables that appear after making secure:
+#
+# BOXTYPE, PIPELINE_SITENAME, PIPELINE_USERNAME
+# and a file, id_rsa
+#
+# these are added to the file $FILE_CONF_EXTRA
+#==============================================
+[ ! -f $FILE_CONF_EXTRA ] && touch $FILE_CONF_EXTRA
+. $FILE_CONF_EXTRA
+BOXTYPE=devel
+PIPELINE_SITENAME=pipeline.openkim.org
+PIPELINE_USERNAME=matt
